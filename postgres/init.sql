@@ -1,34 +1,79 @@
-
-CREATE TABLE IF NOT EXISTS users (
- id SERIAL PRIMARY KEY,
- username VARCHAR(50) UNIQUE NOT NULL,
- email VARCHAR(100) UNIQUE NOT NULL,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE Professor (
+    id_professor SERIAL PRIMARY KEY,
+    nome_completo VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS posts (
- id SERIAL PRIMARY KEY,
- user_id INTEGER REFERENCES users(id),
- title VARCHAR(200) NOT NULL,
- content TEXT,
- created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE Turma (
+    id_turma SERIAL PRIMARY KEY,
+    nome_turma VARCHAR(50) NOT NULL,
+    id_professor INT,
+    horario VARCHAR(100),
+    FOREIGN KEY (id_professor) REFERENCES Professor(id_professor)
 );
 
-INSERT INTO users (username, email) VALUES
- ('usuario_teste', 'teste@exemplo.com'),
- ('admin', 'admin@exemplo.com');
-
-
- CREATE TABLE alunos (
-    aluno_id VARCHAR(5) NOT NULL PRIMARY KEY,
-    nome VARCHAR(40) NOT NULL,
-    endereco VARCHAR(60),
-    cidade VARCHAR(15),
-    estado VARCHAR(15),
-    cep VARCHAR(10),
-    pais VARCHAR(15),
-    telefone VARCHAR(24)
+CREATE TABLE Aluno (
+    id_aluno SERIAL PRIMARY KEY,
+    nome_completo VARCHAR(255) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    id_turma INT,
+    nome_responsavel VARCHAR(255),
+    telefone_responsavel VARCHAR(20),
+    email_responsavel VARCHAR(100),
+    informacoes_adicionais TEXT,
+    FOREIGN KEY (id_turma) REFERENCES Turma(id_turma)
 );
+
+
+
+CREATE TABLE Pagamento (
+    id_pagamento SERIAL PRIMARY KEY,
+    id_aluno INT,
+    data_pagamento DATE NOT NULL,
+    valor_pago DECIMAL(10, 2) NOT NULL,
+    forma_pagamento VARCHAR(50),
+    referencia VARCHAR(100),
+    status VARCHAR(20),
+    FOREIGN KEY (id_aluno) REFERENCES Aluno(id_aluno)
+);
+
+
+CREATE TABLE Presenca (
+    id_presenca SERIAL PRIMARY KEY,
+    id_aluno INT,
+    data_presenca DATE NOT NULL,
+    presente BOOLEAN NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES Aluno(id_aluno)
+);
+
+
+CREATE TABLE Atividade (
+    id_atividade SERIAL PRIMARY KEY,
+    descricao TEXT NOT NULL,
+    data_realizacao DATE NOT NULL
+);
+
+
+CREATE TABLE Atividade_Aluno (
+    id_atividade INT,
+    id_aluno INT,
+    PRIMARY KEY (id_atividade, id_aluno),
+    FOREIGN KEY (id_atividade) REFERENCES Atividade(id_atividade),
+    FOREIGN KEY (id_aluno) REFERENCES Aluno(id_aluno)
+);
+
+
+CREATE TABLE Usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    login VARCHAR(50) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    nivel_acesso VARCHAR(20),
+    id_professor INT,
+    FOREIGN KEY (id_professor) REFERENCES Professor(id_professor) 
+    
+);
+
 
 INSERT INTO alunos (aluno_id, nome, endereco, cidade, estado, cep, pais, telefone) VALUES
 ('A001', 'João Silva', 'Rua A', 'São Paulo', 'SP', '01000-000', 'Brasil', '11999999999'),
