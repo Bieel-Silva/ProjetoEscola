@@ -13,22 +13,3 @@ ENV DATABASE_URL=postgresql://postgres:postgres@postgres:5432/app_database
 EXPOSE 8000
 # Comando para iniciar a aplicação
 CMD ["python", "main.py"]
-
-FROM postgres:latest
-
-ENV POSTGRES_DB=escola
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=postgres
-
-COPY init.sql /docker-entrypoint-initdb.d/
-
-FROM python:3.9-slim
-
-WORKDIR /app
-
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-COPY . .
-
-CMD ["python", "app.py"]

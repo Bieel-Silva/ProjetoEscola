@@ -14,18 +14,12 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  flask-app:
-    build:
-      context: ./flask-app
+  app:
+    build: ./python-app
     container_name: flask_api
     restart: always
     depends_on:
       - postgres
-    environment:
-      - DATABASE_HOST=postgres
-      - DATABASE_NAME=escola
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=postgres
     ports:
       - "8000:8000"
 
