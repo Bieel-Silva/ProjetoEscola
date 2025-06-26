@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Sistema de Gestão Escolar{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Sistema de Gestão Escolar</h1>
+    <div class="alert alert-info">
+        {{ mensagem }}
+    </div>
+    <div class="list-group">
+        <a href="/alunos" class="list-group-item list-group-item-action">Gerenciar Alunos</a>
+        <a href="/professores" class="list-group-item list-group-item-action">Gerenciar Professores</a>
+        <a href="/turmas" class="list-group-item list-group-item-action">Gerenciar Turmas</a>
+        <a href="/disciplinas" class="list-group-item list-group-item-action">Gerenciar Disciplinas</a>
+        <a href="/notas" class="list-group-item list-group-item-action">Gerenciar Notas</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Disciplinas{% endblock %}
+{% block content %}
+<h2>Disciplinas</h2>
+<a href="/disciplinas/novo" class="btn btn-success mb-3">Nova Disciplina</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for disciplina in disciplinas %}
+        <tr>
+            <td>{{ disciplina.id }}</td>
+            <td>{{ disciplina.nome }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

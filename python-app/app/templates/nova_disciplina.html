@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Nova Disciplina{% endblock %}
+{% block content %}
+<h2>Nova Disciplina</h2>
+<form method="post">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome da Disciplina</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/disciplinas" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

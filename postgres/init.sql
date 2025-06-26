@@ -75,8 +75,21 @@ CREATE TABLE Usuario (
   FOREIGN KEY (id_professor) REFERENCES Professor(id_professor) ON DELETE SET NULL
 );
 
+-- Tabela Disciplina
+CREATE TABLE Disciplina (
+  id_disciplina SERIAL PRIMARY KEY,
+  nome_disciplina VARCHAR(100) NOT NULL
+);
 
-
+-- Tabela Nota (relaciona Aluno, Disciplina e valor da nota)
+CREATE TABLE Nota (
+  id_nota SERIAL PRIMARY KEY,
+  id_aluno INT NOT NULL,
+  id_disciplina INT NOT NULL,
+  valor NUMERIC(4,2) NOT NULL,
+  FOREIGN KEY (id_aluno) REFERENCES Aluno(id_aluno) ON DELETE CASCADE,
+  FOREIGN KEY (id_disciplina) REFERENCES Disciplina(id_disciplina) ON DELETE CASCADE
+);
 
 INSERT INTO alunos (aluno_id, nome, endereco, cidade, estado, cep, pais, telefone) VALUES
 ('A001', 'João Silva', 'Rua A', 'São Paulo', 'SP', '01000-000', 'Brasil', '11999999999'),

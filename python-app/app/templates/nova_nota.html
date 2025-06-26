@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Lançar Nota{% endblock %}
+{% block content %}
+<h2>Lançar Nota</h2>
+<form method="post">
+    <div class="mb-3">
+        <label for="aluno_id" class="form-label">Aluno</label>
+        <select class="form-select" id="aluno_id" name="aluno_id" required>
+            <option value="">Selecione</option>
+            {% for aluno in alunos %}
+            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="disciplina_id" class="form-label">Disciplina</label>
+        <select class="form-select" id="disciplina_id" name="disciplina_id" required>
+            <option value="">Selecione</option>
+            {% for disciplina in disciplinas %}
+            <option value="{{ disciplina.id }}">{{ disciplina.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="valor" class="form-label">Nota</label>
+        <input type="number" step="0.01" min="0" max="10" class="form-control" id="valor" name="valor" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/notas" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

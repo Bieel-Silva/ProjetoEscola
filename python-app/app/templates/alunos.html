@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Alunos{% endblock %}
+{% block content %}
+<h2>Alunos</h2>
+<a href="/alunos/novo" class="btn btn-success mb-3">Novo Aluno</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.id }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
