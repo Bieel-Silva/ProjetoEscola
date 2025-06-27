@@ -1,6 +1,6 @@
-import os
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from app.database import get_db_connection, close_db_connection
+from urllib.parse import quote as url_quote
 
 app = Flask(__name__)
 
