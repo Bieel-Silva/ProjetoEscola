@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Projeto Escola
 
 Este projeto é um sistema de gerenciamento escolar desenvolvido em PostgreSQL. Ele contém a estrutura de tabelas e relacionamentos necessários para gerenciar professores, turmas, alunos, pagamentos, presenças, atividades, usuários, disciplinas e notas.
@@ -262,4 +261,3 @@ INSERT INTO Aluno (nome_completo, data_nascimento, id_turma, nome_responsavel, t
 ('João Silva', '2005-01-15', NULL, 'Carlos Silva', '11999999999', 'carlos.silva@email.com', 'Nenhuma'),
 ('Maria Oliveira', '2006-03-22', NULL, 'Ana Oliveira', '21999999999', 'ana.oliveira@email.com', 'Nenhuma'),
 ('Pedro Santos', '2007-07-10', NULL, 'Roberto Santos', '71999999999', 'roberto.santos@email.com', 'Nenhuma');
->>>>>>> 0f984844f2f1dc3fd506041216a356ac4bfbe7a8
